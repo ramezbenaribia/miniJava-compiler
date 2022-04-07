@@ -10,35 +10,28 @@ from Interface.Menu import Executer, File
 
 root = tk.Tk()
 root.title("Java Compiler")
-root.geometry("1000x700")
-root.minsize(width=400, height=400)
+root.geometry("1200x600")
 
 m = PanedWindow(root, orient=VERTICAL)
-m.pack(fill=BOTH, expand=1)
 
 
-# TOP : Text Editor
+# LEFT : Text Editor
 text = Example(root)
 
-text.pack(fill=Y, expand=1)
-m.add(text)
-# text.focus_set()
+text.pack(fill=Y, expand=1, pady=20,  side=tk.LEFT)
 
-# BOTTOM : Compile Log
-compiled = ScrolledText(state='normal', height=10,
-                        width=100, wrap='none', undo=True)
-compiled.pack(fill=Y, expand=1)
+# RIGHT : Compile Log
+compiled = ScrolledText(state='normal', height=32, width=100)
+compiled.pack(fill=Y, expand=1, pady=50, side=tk.RIGHT)
 compiled.configure(bg="black", fg="white")
-m.add(compiled)
 
 
 objFile = File(text, root)
 executer = Executer(text, compiled, objFile)
-img = PhotoImage(file='right.png')
-button = Button(root, image=img, command=executer.compileFile)
-button.pack(side=TOP)
-m.add(button)
+img = PhotoImage(file='start.png')
+button = Button(root, image=img, width=100, command=executer.compileFile)
 
+button.place(x=900, y=10)
 
 menubar = Menu(root)
 file_menu(root, text, menubar)

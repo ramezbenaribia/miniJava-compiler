@@ -46,6 +46,10 @@ extern int line;
 %token NUMBER 
 %token BOOL
 
+%token QUOTE
+%token INT_ERROR
+%token STRING_ERROR
+
 
 
 %token NOT 
@@ -59,63 +63,66 @@ extern int line;
 
 %%
                                                            
-programme			:  MainClass ClassDeclarationGroup ;
+programme			:  MainClass ClassDeclarationRepeat ;
 
     
 
 
 
-ClassDeclarationGroup           :ClassDeclaration ClassDeclarationGroup                      
+ClassDeclarationRepeat           :ClassDeclaration ClassDeclarationRepeat                      
                                 |epsilon;
 
 
-ClassDeclaration	:CLASS ID EXTENDSIDG ACO_OUVRANTE VarDeclarationGroup MethodDeclarationGroup ACO_FERMANTE
-                        |error ID EXTENDSIDG ACO_OUVRANTE VarDeclarationGroup MethodDeclarationGroup ACO_FERMANTE          {yyerror (" erreur mot cle class errone dans la line : "); YYABORT}
-                        |CLASS error  EXTENDSIDG ACO_OUVRANTE VarDeclarationGroup MethodDeclarationGroup ACO_FERMANTE          {yyerror (" erreur identifier errone dans la line : "); YYABORT}
-                        |CLASS ID  EXTENDSIDG error VarDeclarationGroup MethodDeclarationGroup ACO_FERMANTE              {yyerror (" erreur acolade ouvarnte  manquant dans la line : "); YYABORT}
-                        |CLASS ID  EXTENDSIDG ACO_OUVRANTE VarDeclarationGroup MethodDeclarationGroup error          {yyerror ("  erreur acolade FERMANT  manquant dans la line : "); YYABORT};
+ClassDeclaration	:CLASS ID EXTENDSIDRepeat ACO_OUVRANTE VarDeclarationRepeat MethodDeclarationRepeat ACO_FERMANTE
+                        |error ID EXTENDSIDRepeat ACO_OUVRANTE VarDeclarationRepeat MethodDeclarationRepeat ACO_FERMANTE          {yyerror (" erreur mot cle class errone dans la line : "); YYABORT}
+                        |CLASS error  EXTENDSIDRepeat ACO_OUVRANTE VarDeclarationRepeat MethodDeclarationRepeat ACO_FERMANTE          {yyerror (" erreur identifier errone dans la line : "); YYABORT}
+                        |CLASS ID  EXTENDSIDRepeat error VarDeclarationRepeat MethodDeclarationRepeat ACO_FERMANTE              {yyerror (" erreur acolade ouvarnte  manquant dans la line : "); YYABORT}
+                        |CLASS ID  EXTENDSIDRepeat ACO_OUVRANTE VarDeclarationRepeat MethodDeclarationRepeat error          {yyerror ("  erreur acolade FERMANT  manquant dans la line : "); YYABORT};
   
-EXTENDSIDG		:EXTENDS ID
+EXTENDSIDRepeat		:EXTENDS ID
                         |epsilon
                         |error ID  {yyerror (" mot cle EXTENDS manquant ou bien errone dans la line : "); YYABORT}
                         |CLASS error  {yyerror ("erreur identifier errone dans la line :"); YYABORT}; 
 
 
-VarDeclarationGroup		:VarDeclaration VarDeclarationGroup	
+VarDeclarationRepeat		:VarDeclaration VarDeclarationRepeat	
                         |epsilon;
 
-MethodDeclarationGroup	:MethodDeclaration MethodDeclarationGroup	
+MethodDeclarationRepeat	:MethodDeclaration MethodDeclarationRepeat	
                         |epsilon;
 
-STATEMENTG		:STATEMENT STATEMENTG 
+STATEMENTRepeat		:STATEMENT STATEMENTRepeat 
                         |epsilon;
 
 VarDeclaration		:Type ID  POINT_VIRGULE
+                        |Type ID AFFECTATION QUOTE ID  QUOTE POINT_VIRGULE
+                        |Type ID AFFECTATION error ID  QUOTE POINT_VIRGULE {yyerror ("  QUOTE  manquante  dans la line :"); YYABORT}
+                        |Type ID AFFECTATION QUOTE ID  error POINT_VIRGULE {yyerror ("  QUOTE  manquante  dans la line :"); YYABORT}
                         |Type error POINT_VIRGULE {yyerror ("erreur identifier errone dans la line :"); YYABORT} 
                         |Type ID  error  {yyerror ("POINT_VIRGULE  manquant dans la line :"); YYABORT}; 
 
         		|Type ID AFFECTATION  NUMBER POINT_VIRGULE
         		|Type ID AFFECTATION  error POINT_VIRGULE  {yyerror ("valeur manquante  dans la line :"); YYABORT} ;
 
-VTIG                    :VTI VTIG
+VTIRepeat                    :VTI VTIRepeat
                         |epsilon;
 
 VTI                     :VIRGULE Type ID
                         |error Type ID                  {yyerror ("VIRGULE manquant dans la line :"); YYABORT}     
                         |VIRGULE Type error                  {yyerror ("identifier errone dans la line :"); YYABORT}     ;
 
-TIVTIG                  :Type ID VTIG
+TIVTIRepeat                  :Type ID VTIRepeat
                         |epsilon;
 
-MethodDeclaration	:PUBLIC Type ID PAR_OUVRANTE TIVTIG PAR_FERMANTE ACO_OUVRANTE VarDeclarationGroup STATEMENTG RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE   
-                        |error Type ID PAR_OUVRANTE TIVTIG PAR_FERMANTE ACO_OUVRANTE VarDeclarationGroup STATEMENTG RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE    {yyerror ("mot clee class manquant ou errone dans la line :"); YYABORT}
-                        |PUBLIC Type error PAR_OUVRANTE TIVTIG PAR_FERMANTE ACO_OUVRANTE VarDeclarationGroup STATEMENTG RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE      {yyerror ("erreur identifier errone dans la line :"); YYABORT} 
-                        |PUBLIC Type ID error TIVTIG PAR_FERMANTE ACO_OUVRANTE VarDeclarationGroup STATEMENTG RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE      {yyerror ("erreur parenthese ouvarnte  manquante dans la line :"); YYABORT} 
-                        |PUBLIC Type ID PAR_OUVRANTE TIVTIG error ACO_OUVRANTE VarDeclarationGroup STATEMENTG RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE     {yyerror ("erreur parenthese fermante  manquante dans la line :"); YYABORT}
-                        |PUBLIC Type ID PAR_OUVRANTE TIVTIG PAR_FERMANTE  error VarDeclarationGroup STATEMENTG RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE     {yyerror ("acolade ouvrant  manquant dans la line :"); YYABORT}
-                        |PUBLIC Type ID PAR_OUVRANTE TIVTIG PAR_FERMANTE  ACO_OUVRANTE VarDeclarationGroup STATEMENTG error EXPRESSION POINT_VIRGULE ACO_FERMANTE     {yyerror ("mot clee return manquant ou errone dans la line :"); YYABORT}
-                        |PUBLIC Type ID PAR_OUVRANTE TIVTIG PAR_FERMANTE  ACO_OUVRANTE VarDeclarationGroup STATEMENTG RETURN EXPRESSION error ACO_FERMANTE     {yyerror ("POINT_VIRGULE manquant  dans la line :"); YYABORT}
-                        |PUBLIC Type ID PAR_OUVRANTE TIVTIG PAR_FERMANTE  ACO_OUVRANTE VarDeclarationGroup STATEMENTG RETURN EXPRESSION POINT_VIRGULE error     {yyerror ("acolade fermant  manquante dans la line :"); YYABORT};
+MethodDeclaration	:PUBLIC Type ID PAR_OUVRANTE TIVTIRepeat PAR_FERMANTE ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE   
+                        |error Type ID PAR_OUVRANTE TIVTIRepeat PAR_FERMANTE ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE    {yyerror ("mot clee class manquant ou errone dans la line :"); YYABORT}
+                        |PUBLIC Type error PAR_OUVRANTE TIVTIRepeat PAR_FERMANTE ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE      {yyerror ("erreur identifier errone dans la line :"); YYABORT} 
+                        |PUBLIC Type ID error TIVTIRepeat PAR_FERMANTE ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE      {yyerror ("erreur parenthese ouvarnte  manquante dans la line :"); YYABORT} 
+                        |PUBLIC Type ID PAR_OUVRANTE TIVTIRepeat error ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE     {yyerror ("erreur parenthese fermante  manquante dans la line :"); YYABORT}
+                        |PUBLIC Type ID PAR_OUVRANTE TIVTIRepeat PAR_FERMANTE  error VarDeclarationRepeat STATEMENTRepeat RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE     {yyerror ("acolade ouvrant  manquant dans la line :"); YYABORT}
+                        |PUBLIC Type ID PAR_OUVRANTE TIVTIRepeat PAR_FERMANTE  ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat error EXPRESSION POINT_VIRGULE ACO_FERMANTE     {yyerror ("mot clee return manquant ou errone dans la line :"); YYABORT}
+                        |PUBLIC Type ID PAR_OUVRANTE TIVTIRepeat PAR_FERMANTE  ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat RETURN EXPRESSION error ACO_FERMANTE     {yyerror ("POINT_VIRGULE manquant  dans la line :"); YYABORT}
+                        |PUBLIC Type ID PAR_OUVRANTE TIVTIRepeat PAR_FERMANTE  ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat RETURN EXPRESSION POINT_VIRGULE error     {yyerror ("acolade fermant  manquante dans la line :"); YYABORT};
                         
 
 
@@ -125,7 +132,10 @@ Type			:INT TAB_OUVRANTE TAB_FERMANTE
 			|INT TAB_OUVRANTE error                 {yyerror ("erreur tabulation fermante manquante dans la line :"); YYABORT} 
 			|BOOLEAN		
 			|INT
+			|STRING
 			|ID
+			|INT_ERROR                                     {yyerror ("erreur de type pour INT dans la line :"); YYABORT} 
+			|STRING_ERROR                                     {yyerror ("erreur de type pour STRING dans la line :"); YYABORT} 
                         |error                                  {yyerror ("erreur de type dans la line :"); YYABORT} 
 
                
@@ -149,7 +159,7 @@ ARG			: PAR_OUVRANTE STRING TAB_OUVRANTE TAB_FERMANTE ID PAR_FERMANTE
 
 
 
-STATEMENT		:STATEMENTG              
+STATEMENT		:STATEMENTRepeat              
                         |IF PAR_OUVRANTE EXPRESSION PAR_FERMANTE  ACO_OUVRANTE STATEMENT ACO_FERMANTE  ELSE ACO_OUVRANTE STATEMENT ACO_FERMANTE
                         |IF PAR_OUVRANTE EXPRESSION PAR_FERMANTE  ACO_OUVRANTE STATEMENT ACO_FERMANTE  ELSE  STATEMENT 
                         |IF PAR_OUVRANTE EXPRESSION PAR_FERMANTE   STATEMENT ELSE ACO_OUVRANTE STATEMENT ACO_FERMANTE

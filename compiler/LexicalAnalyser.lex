@@ -23,7 +23,9 @@ bool	  (true|false)
 iderrone  [0-9][A-Za-z0-9_]*
 comment_ouvrant "/*"
 comment_fermant "*/"
+quote \"
 
+quotaio_mark (\")
 paraouvrante  (\()
 parafermante  (\))
 acououvrante  (\{)
@@ -69,11 +71,13 @@ COMMENT_BLOC_ouvrant 	   {comment_ouvrant}([^*]|\*+[^*/])*\*+
 
 "boolean"									     return BOOLEAN;
 "int"										     return INT;
+(in|i|it|nt)										     return INT_ERROR;
 "String" 									     return STRING;
+(string|strin|tring|sring|strng|strig)									 return STRING_ERROR;
 
 
 
-
+{quote}                                                                       return QUOTE;
 {paraouvrante}                                                                       return PAR_OUVRANTE;
 {parafermante}                                                                       return PAR_FERMANTE;
 {acououvrante}                                                                       return ACO_OUVRANTE;

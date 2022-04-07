@@ -56,7 +56,7 @@ class CustomText(tk.Text):
 class Example(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
-        self.text = CustomText(self)
+        self.text = CustomText(self, height=1, width=79)
         self.vsb = tk.Scrollbar(self, orient="vertical",
                                 command=self.text.yview)
         self.text.configure(yscrollcommand=self.vsb.set)

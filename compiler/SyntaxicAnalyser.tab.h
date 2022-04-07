@@ -71,7 +71,10 @@
      ID = 287,
      NUMBER = 288,
      BOOL = 289,
-     NOT = 290
+     QUOTE = 290,
+     INT_ERROR = 291,
+     STRING_ERROR = 292,
+     NOT = 293
    };
 #endif
 
