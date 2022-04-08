@@ -104,8 +104,8 @@ COMMENT_BLOC_ouvrant 	   {comment_ouvrant}([^*]|\*+[^*/])*\*+
 
 
 
-{COMMENT_LINE}         								     printf("commentaire line");  
-{COMMENT_LONG}        								     printf("commentaire long");   
+{COMMENT_LINE}         								     return COMMENT_LINE ;  
+{COMMENT_LONG}        								     return COMMENT_LONG ;   
 
 
 

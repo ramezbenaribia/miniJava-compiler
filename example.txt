@@ -6,14 +6,13 @@ class Factorial{
 
 
 class Fac {
-    public int ComputeFac(int num){
+    public int ComputeFac(int 2num){
         int num_aux ;
         if (num < 1)
             num_aux = 1 ;
-        else{
-            num_aux = num * (this.ComputeFac(num)) ; 
-		/*mechant programme n'est pas ? */
-}
+        else
+            num_aux = num * (this.ComputeFac(num-1)) ; 
+		/*mechant programme n'est pas ? 
         return num_aux ;
     }
 }

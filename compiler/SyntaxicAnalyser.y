@@ -52,6 +52,8 @@ extern int line;
 %token BOOLEAN_ERROR
 
 
+%token COMMENT_LINE 
+%token COMMENT_LONG 
 
 %token NOT 
 
@@ -196,6 +198,9 @@ STATEMENT		:STATEMENTRepeat
                         |ID TAB_OUVRANTE EXPRESSION error AFFECTATION EXPRESSION POINT_VIRGULE                    {yyerror ("erreur tabulation fermante manquante dans la line :"); YYABORT}
                         |ID TAB_OUVRANTE EXPRESSION TAB_FERMANTE error EXPRESSION POINT_VIRGULE                  {yyerror ("AFFECTATION errone dans la line :"); YYABORT}
                         |ID TAB_OUVRANTE EXPRESSION TAB_FERMANTE AFFECTATION EXPRESSION error                     {yyerror ("POINT_VIRGULE  manquant dans la line :"); YYABORT};
+                       
+                        |COMMENT_LINE
+                        |COMMENT_LONG
 
 
 EXPRESSION		:EXPRESSION OPERATOR EXPRESSION
@@ -215,6 +220,9 @@ EXPRESSION		:EXPRESSION OPERATOR EXPRESSION
                         |EXPRESSION POINT ID error EVEXPRESSION PAR_FERMANTE                                    {yyerror ("erreur parenthese ouvarnte  manquante dans la line :"); YYABORT}
                         |EXPRESSION POINT ID PAR_OUVRANTE EVEXPRESSION error                                    {yyerror ("erreur parenthese fermante  manquante dans la line :"); YYABORT}
 
+                        |QUOTE ID QUOTE
+                        |QUOTE ID error {yyerror ("  QUOTE  manquante  dans la line :"); YYABORT}
+                        |error ID error {yyerror ("  QUOTE  manquante  dans la line :"); YYABORT}
 
                         |NUMBER
                         |BOOL

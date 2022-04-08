@@ -997,12 +997,12 @@ return BOOL;
 case 45:
 YY_RULE_SETUP
 #line 107 "LexicalAnalyser.lex"
-printf("commentaire line");  
+return COMMENT_LINE ;  
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
 #line 108 "LexicalAnalyser.lex"
-printf("commentaire long");   
+return COMMENT_LONG ;   
 	YY_BREAK
 case 47:
 YY_RULE_SETUP

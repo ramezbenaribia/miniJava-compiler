@@ -75,7 +75,9 @@
      INT_ERROR = 291,
      STRING_ERROR = 292,
      BOOLEAN_ERROR = 293,
-     NOT = 294
+     COMMENT_LINE = 294,
+     COMMENT_LONG = 295,
+     NOT = 296
    };
 #endif
 
