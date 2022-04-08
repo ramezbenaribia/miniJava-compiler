@@ -74,7 +74,8 @@
      QUOTE = 290,
      INT_ERROR = 291,
      STRING_ERROR = 292,
-     NOT = 293
+     BOOLEAN_ERROR = 293,
+     NOT = 294
    };
 #endif
 

@@ -49,6 +49,7 @@ extern int line;
 %token QUOTE
 %token INT_ERROR
 %token STRING_ERROR
+%token BOOLEAN_ERROR
 
 
 
@@ -111,7 +112,7 @@ VTI                     :VIRGULE Type ID
                         |error Type ID                  {yyerror ("VIRGULE manquant dans la line :"); YYABORT}     
                         |VIRGULE Type error                  {yyerror ("identifier errone dans la line :"); YYABORT}     ;
 
-TIVTIRepeat                  :Type ID VTIRepeat
+TIVTIRepeat             :Type ID VTIRepeat
                         |epsilon;
 
 MethodDeclaration	:PUBLIC Type ID PAR_OUVRANTE TIVTIRepeat PAR_FERMANTE ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat RETURN EXPRESSION POINT_VIRGULE ACO_FERMANTE   
@@ -130,12 +131,16 @@ MethodDeclaration	:PUBLIC Type ID PAR_OUVRANTE TIVTIRepeat PAR_FERMANTE ACO_OUVR
 Type			:INT TAB_OUVRANTE TAB_FERMANTE	
 			|INT error TAB_FERMANTE                 {yyerror ("erreur tabulation ouvrante manquante dans la line :"); YYABORT} 
 			|INT TAB_OUVRANTE error                 {yyerror ("erreur tabulation fermante manquante dans la line :"); YYABORT} 
+			|INT_ERROR                                     {yyerror ("erreur de type pour INT dans la line :"); YYABORT} 
 			|BOOLEAN		
+			|BOOLEAN_ERROR                                     {yyerror ("erreur de type pour BOOLEAN dans la line :"); YYABORT} 
 			|INT
 			|STRING
-			|ID
-			|INT_ERROR                                     {yyerror ("erreur de type pour INT dans la line :"); YYABORT} 
+			|STRING TAB_OUVRANTE TAB_FERMANTE
+			|STRING error TAB_FERMANTE                 {yyerror ("erreur tabulation ouvrante manquante dans la line :"); YYABORT} 
+			|STRING TAB_OUVRANTE error                 {yyerror ("erreur tabulation fermante manquante dans la line :"); YYABORT} 
 			|STRING_ERROR                                     {yyerror ("erreur de type pour STRING dans la line :"); YYABORT} 
+			|ID
                         |error                                  {yyerror ("erreur de type dans la line :"); YYABORT} 
 
                

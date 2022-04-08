@@ -70,6 +70,7 @@ COMMENT_BLOC_ouvrant 	   {comment_ouvrant}([^*]|\*+[^*/])*\*+
 
 
 "boolean"									     return BOOLEAN;
+(bool|Boolean|boolea|bolean)									     return BOOLEAN_ERROR;
 "int"										     return INT;
 (in|i|it|nt)										     return INT_ERROR;
 "String" 									     return STRING;
