@@ -447,9 +447,9 @@ static const yytype_uint16 yyprhs[] =
      419,   426,   433,   435,   447,   457,   467,   479,   491,   503,
      515,   523,   529,   537,   545,   553,   559,   565,   571,   577,
      583,   588,   593,   598,   603,   611,   619,   627,   635,   643,
-     651,   653,   655,   659,   663,   668,   673,   678,   682,   686,
-     690,   697,   704,   711,   718,   725,   729,   733,   737,   739,
-     741,   743,   745,   747,   753,   759,   765,   771,   777,   782,
+     651,   653,   655,   659,   663,   665,   667,   669,   671,   676,
+     681,   686,   690,   694,   698,   705,   712,   719,   726,   733,
+     737,   741,   745,   747,   753,   759,   765,   771,   777,   782,
      787,   792,   797,   802,   805,   808,   812,   816,   820,   823,
      825,   829,   833,   835
 };
@@ -523,15 +523,15 @@ static const yytype_int8 yyrhs[] =
        1,    30,    59,    19,    -1,    32,    29,    59,    28,     1,
       59,    19,    -1,    32,    29,    59,    28,    30,    59,     1,
       -1,    39,    -1,    40,    -1,    59,    31,    59,    -1,    59,
-       1,    59,    -1,    59,    29,    59,    28,    -1,    59,     1,
-      59,    28,    -1,    59,    29,    59,     1,    -1,    59,    18,
-      15,    -1,    59,     1,    15,    -1,    59,    18,     1,    -1,
-      59,    18,    32,    24,    60,    25,    -1,    59,     1,    32,
-      24,    60,    25,    -1,    59,    18,     1,    24,    60,    25,
-      -1,    59,    18,    32,     1,    60,    25,    -1,    59,    18,
-      32,    24,    60,     1,    -1,    35,    32,    35,    -1,    35,
-      32,     1,    -1,     1,    32,     1,    -1,    33,    -1,    34,
-      -1,    32,    -1,    16,    -1,     1,    -1,    17,    22,    26,
+       1,    59,    -1,    32,    -1,    33,    -1,    34,    -1,    16,
+      -1,    59,    29,    59,    28,    -1,    59,     1,    59,    28,
+      -1,    59,    29,    59,     1,    -1,    59,    18,    15,    -1,
+      59,     1,    15,    -1,    59,    18,     1,    -1,    59,    18,
+      32,    24,    60,    25,    -1,    59,     1,    32,    24,    60,
+      25,    -1,    59,    18,     1,    24,    60,    25,    -1,    59,
+      18,    32,     1,    60,    25,    -1,    59,    18,    32,    24,
+      60,     1,    -1,    35,    32,    35,    -1,    35,    32,     1,
+      -1,     1,    32,     1,    -1,     1,    -1,    17,    22,    26,
       59,    27,    -1,     1,    22,    26,    59,    27,    -1,    17,
        1,    26,    59,    27,    -1,    17,    22,     1,    59,    27,
       -1,    17,    22,    26,    59,     1,    -1,    17,    32,    24,
@@ -556,11 +556,11 @@ static const yytype_uint16 yyrline[] =
      163,   164,   169,   170,   171,   172,   173,   174,   175,   176,
      178,   179,   180,   181,   182,   184,   185,   186,   187,   188,
      190,   191,   192,   193,   195,   196,   197,   198,   199,   200,
-     202,   203,   206,   207,   209,   210,   211,   213,   214,   215,
-     217,   218,   219,   220,   221,   223,   224,   225,   227,   228,
-     229,   230,   231,   233,   234,   235,   236,   237,   239,   240,
-     241,   242,   243,   245,   246,   248,   249,   250,   253,   254,
-     256,   257,   258,   261
+     202,   203,   206,   207,   209,   210,   211,   212,   214,   215,
+     216,   218,   219,   220,   222,   223,   224,   225,   226,   228,
+     229,   230,   232,   234,   235,   236,   237,   238,   240,   241,
+     242,   243,   244,   246,   247,   249,   250,   251,   254,   255,
+     257,   258,   259,   262
 };
 #endif
 
@@ -630,9 +630,9 @@ static const yytype_uint8 yyr2[] =
        6,     6,     1,    11,     9,     9,    11,    11,    11,    11,
        7,     5,     7,     7,     7,     5,     5,     5,     5,     5,
        4,     4,     4,     4,     7,     7,     7,     7,     7,     7,
-       1,     1,     3,     3,     4,     4,     4,     3,     3,     3,
-       6,     6,     6,     6,     6,     3,     3,     3,     1,     1,
-       1,     1,     1,     5,     5,     5,     5,     5,     4,     4,
+       1,     1,     3,     3,     1,     1,     1,     1,     4,     4,
+       4,     3,     3,     3,     6,     6,     6,     6,     6,     3,
+       3,     3,     1,     5,     5,     5,     5,     5,     4,     4,
        4,     4,     4,     2,     2,     3,     3,     3,     2,     1,
        3,     3,     1,     0
 };
@@ -657,7 +657,7 @@ static const yytype_uint8 yydefact[] =
       18,     0,     0,     0,     0,     0,     0,    45,    46,    44,
       53,    54,    52,     0,     0,     6,    16,    24,    25,    20,
        0,     7,     8,     9,     5,     0,     0,     0,     0,     0,
-       0,     0,   121,     0,     0,   120,   118,   119,     0,     0,
+       0,     0,   107,     0,     0,   104,   105,   106,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,    59,    60,    61,    62,    63,    64,    58,     0,
        0,     0,     0,     0,     0,    66,    67,    68,    69,    70,
@@ -665,20 +665,20 @@ static const yytype_uint8 yydefact[] =
        0,     0,     0,     0,     0,     0,     0,    91,     0,     0,
        0,     0,     0,     0,     0,     0,     0,    92,     0,     0,
        0,     0,    90,     0,     0,     0,     0,    27,     0,    26,
-       0,     0,   117,     0,   136,     0,     0,     0,     0,     0,
-       0,     0,   135,   116,   115,   108,   120,     0,   109,   107,
+       0,     0,   121,     0,   136,     0,     0,     0,     0,     0,
+       0,     0,   135,   120,   119,   112,   104,     0,   113,   111,
        0,    86,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,    87,    88,    89,    85,     0,     0,
        0,     0,     0,     0,    34,     0,     0,     0,     0,     0,
        0,     0,   129,   130,     0,     0,     0,   131,   132,   128,
-       0,   105,     0,     0,     0,     0,     0,   104,     0,     0,
+       0,   109,     0,     0,     0,     0,     0,   108,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,    22,    23,    21,   124,
      125,   126,     0,   123,     0,     0,   139,     0,     0,     0,
       82,    95,     0,     0,     0,     0,    83,    84,    80,    96,
       97,    98,     0,    94,     0,     0,     0,    33,     0,    29,
-       0,     0,     0,     0,     0,     0,     0,   138,   142,   111,
-     112,   113,   114,   110,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,   138,   142,   115,
+     116,   117,   118,   114,     0,     0,     0,     0,     0,     0,
        0,     0,     0,    28,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,    75,    72,    31,
       32,    30,    72,    72,    72,    72,     0,   141,   140,     0,
@@ -806,8 +806,8 @@ static const yytype_int16 yytable[] =
     -143,    75,    76,   107,   327,   328,   329,   135,   108,   109,
      127,   130,   202,   141,   385,  -143,   151,   137,   142,   145,
       77,   194,   206,   204,   198,   205,   172,    78,    79,   200,
-     245,   152,   153,  -106,  -106,  -106,   146,   147,   148,   154,
-    -106,   173,  -106,  -106,  -106,   174,  -106,   246,   156,   157,
+     245,   152,   153,  -110,  -110,  -110,   146,   147,   148,   154,
+    -110,   173,  -110,  -110,  -110,   174,  -110,   246,   156,   157,
      158,   175,   179,   151,   185,   186,   159,   187,   188,   189,
      199,   219,   223,   224,   229,   255,   231,   245,   152,   153,
     -127,  -127,  -127,   230,   253,   254,   154,  -127,   202,  -127,
@@ -869,8 +869,8 @@ static const yytype_int16 yytable[] =
       56,    57,    58,  -143,     0,     0,    59,    60,    61,     0,
       58,   202,   331,   232,    59,    60,    61,     0,    55,    56,
       57,     0,   204,     0,   205,     0,     0,   201,     0,    58,
-    -120,  -120,  -120,    59,    60,    61,   233,  -120,     0,  -120,
-    -120,  -120,   201,  -120,   202,  -134,  -134,     0,     0,     0,
+    -104,  -104,  -104,    59,    60,    61,   233,  -104,     0,  -104,
+    -104,  -104,   201,  -104,   202,  -134,  -134,     0,     0,     0,
        0,   234,     0,  -134,  -134,   204,   201,   205,     0,   202,
     -133,  -133,     0,     0,     0,     0,  -133,     0,  -133,  -133,
      204,   201,   205,   202,  -103,  -103,   201,     0,     0,   212,
@@ -2311,164 +2311,164 @@ yyreduce:
     {yyerror ("operateur manquant dans la line :"); YYABORT;}
     break;
 
-  case 105:
-
-/* Line 1455 of yacc.c  */
-#line 210 "SyntaxicAnalyser.y"
-    {yyerror ("erreur tabulation ouvrante manquante dans la line :"); YYABORT;}
-    break;
-
-  case 106:
-
-/* Line 1455 of yacc.c  */
-#line 211 "SyntaxicAnalyser.y"
-    {yyerror ("erreur tabulation fermante manquante dans la line :"); YYABORT;}
-    break;
-
-  case 108:
-
-/* Line 1455 of yacc.c  */
-#line 214 "SyntaxicAnalyser.y"
-    {yyerror ("POINT manquant dans la line :"); YYABORT;}
-    break;
-
   case 109:
 
 /* Line 1455 of yacc.c  */
 #line 215 "SyntaxicAnalyser.y"
-    {yyerror ("mot cle LENGTH manquant dans la line :"); YYABORT;}
+    {yyerror ("erreur tabulation ouvrante manquante dans la line :"); YYABORT;}
     break;
 
-  case 111:
+  case 110:
 
 /* Line 1455 of yacc.c  */
-#line 218 "SyntaxicAnalyser.y"
-    {yyerror ("POINT manquant dans la line :"); YYABORT;}
+#line 216 "SyntaxicAnalyser.y"
+    {yyerror ("erreur tabulation fermante manquante dans la line :"); YYABORT;}
     break;
 
   case 112:
 
 /* Line 1455 of yacc.c  */
 #line 219 "SyntaxicAnalyser.y"
-    {yyerror ("erreur identifier errone dans la line :"); YYABORT;}
+    {yyerror ("POINT manquant dans la line :"); YYABORT;}
     break;
 
   case 113:
 
 /* Line 1455 of yacc.c  */
 #line 220 "SyntaxicAnalyser.y"
-    {yyerror ("erreur parenthese ouvarnte  manquante dans la line :"); YYABORT;}
+    {yyerror ("mot cle LENGTH manquant dans la line :"); YYABORT;}
     break;
 
-  case 114:
+  case 115:
 
 /* Line 1455 of yacc.c  */
-#line 221 "SyntaxicAnalyser.y"
-    {yyerror ("erreur parenthese fermante  manquante dans la line :"); YYABORT;}
+#line 223 "SyntaxicAnalyser.y"
+    {yyerror ("POINT manquant dans la line :"); YYABORT;}
     break;
 
   case 116:
 
 /* Line 1455 of yacc.c  */
 #line 224 "SyntaxicAnalyser.y"
-    {yyerror ("  QUOTE  manquante  dans la line :"); YYABORT;}
+    {yyerror ("erreur identifier errone dans la line :"); YYABORT;}
     break;
 
   case 117:
 
 /* Line 1455 of yacc.c  */
 #line 225 "SyntaxicAnalyser.y"
+    {yyerror ("erreur parenthese ouvarnte  manquante dans la line :"); YYABORT;}
+    break;
+
+  case 118:
+
+/* Line 1455 of yacc.c  */
+#line 226 "SyntaxicAnalyser.y"
+    {yyerror ("erreur parenthese fermante  manquante dans la line :"); YYABORT;}
+    break;
+
+  case 120:
+
+/* Line 1455 of yacc.c  */
+#line 229 "SyntaxicAnalyser.y"
+    {yyerror ("  QUOTE  manquante  dans la line :"); YYABORT;}
+    break;
+
+  case 121:
+
+/* Line 1455 of yacc.c  */
+#line 230 "SyntaxicAnalyser.y"
     {yyerror ("  QUOTE  manquante  dans la line :"); YYABORT;}
     break;
 
   case 122:
 
 /* Line 1455 of yacc.c  */
-#line 231 "SyntaxicAnalyser.y"
+#line 232 "SyntaxicAnalyser.y"
     {yyerror ("erreur dans la line :"); YYABORT;}
     break;
 
   case 124:
 
 /* Line 1455 of yacc.c  */
-#line 234 "SyntaxicAnalyser.y"
+#line 235 "SyntaxicAnalyser.y"
     {yyerror (" mot cle NEW manquant ou bien errone dans la line : "); YYABORT;}
     break;
 
   case 125:
 
 /* Line 1455 of yacc.c  */
-#line 235 "SyntaxicAnalyser.y"
+#line 236 "SyntaxicAnalyser.y"
     {yyerror (" mot cle int manquant ou bien errone dans la line : "); YYABORT;}
     break;
 
   case 126:
 
 /* Line 1455 of yacc.c  */
-#line 236 "SyntaxicAnalyser.y"
+#line 237 "SyntaxicAnalyser.y"
     {yyerror (" erreur acolade ouvarnte  manquante dans la line : "); YYABORT;}
     break;
 
   case 127:
 
 /* Line 1455 of yacc.c  */
-#line 237 "SyntaxicAnalyser.y"
+#line 238 "SyntaxicAnalyser.y"
     {yyerror (" erreur acolade fermante  manquante dans la line : "); YYABORT;}
     break;
 
   case 129:
 
 /* Line 1455 of yacc.c  */
-#line 240 "SyntaxicAnalyser.y"
+#line 241 "SyntaxicAnalyser.y"
     {yyerror (" mot cle NEW manquant ou bien errone dans la line : "); YYABORT;}
     break;
 
   case 130:
 
 /* Line 1455 of yacc.c  */
-#line 241 "SyntaxicAnalyser.y"
+#line 242 "SyntaxicAnalyser.y"
     {yyerror (" erreur identifier errone dans la line : "); YYABORT;}
     break;
 
   case 131:
 
 /* Line 1455 of yacc.c  */
-#line 242 "SyntaxicAnalyser.y"
+#line 243 "SyntaxicAnalyser.y"
     {yyerror ("erreur parenthese ouvarnte  manquante dans la line :"); YYABORT;}
     break;
 
   case 132:
 
 /* Line 1455 of yacc.c  */
-#line 243 "SyntaxicAnalyser.y"
+#line 244 "SyntaxicAnalyser.y"
     {yyerror ("erreur parenthese fermante  manquante dans la line :"); YYABORT;}
     break;
 
   case 134:
 
 /* Line 1455 of yacc.c  */
-#line 246 "SyntaxicAnalyser.y"
+#line 247 "SyntaxicAnalyser.y"
     {yyerror ("erreur dans la line :"); YYABORT;}
     break;
 
   case 136:
 
 /* Line 1455 of yacc.c  */
-#line 249 "SyntaxicAnalyser.y"
+#line 250 "SyntaxicAnalyser.y"
     {yyerror ("erreur parenthese ouvarnte  manquante dans la line :"); YYABORT;}
     break;
 
   case 137:
 
 /* Line 1455 of yacc.c  */
-#line 250 "SyntaxicAnalyser.y"
+#line 251 "SyntaxicAnalyser.y"
     {yyerror ("erreur parenthese fermante  manquante dans la line :"); YYABORT;}
     break;
 
   case 141:
 
 /* Line 1455 of yacc.c  */
-#line 257 "SyntaxicAnalyser.y"
+#line 258 "SyntaxicAnalyser.y"
     {yyerror ("erreur VIRGULE manquante dans la line :"); YYABORT;}
     break;
 
@@ -2687,7 +2687,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 269 "SyntaxicAnalyser.y"
+#line 270 "SyntaxicAnalyser.y"
  
 
 int yyerror(char const *msg) {

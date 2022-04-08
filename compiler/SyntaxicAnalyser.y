@@ -206,6 +206,11 @@ STATEMENT		:STATEMENTRepeat
 EXPRESSION		:EXPRESSION OPERATOR EXPRESSION
                         |EXPRESSION error EXPRESSION                                                              {yyerror ("operateur manquant dans la line :"); YYABORT}
 
+                        |ID
+                        |NUMBER
+                        |BOOL
+                        |THIS
+
                         |EXPRESSION TAB_OUVRANTE EXPRESSION TAB_FERMANTE
                         |EXPRESSION error EXPRESSION TAB_FERMANTE                                               {yyerror ("erreur tabulation ouvrante manquante dans la line :"); YYABORT}
                         |EXPRESSION TAB_OUVRANTE EXPRESSION error                                               {yyerror ("erreur tabulation fermante manquante dans la line :"); YYABORT}
@@ -224,10 +229,6 @@ EXPRESSION		:EXPRESSION OPERATOR EXPRESSION
                         |QUOTE ID error {yyerror ("  QUOTE  manquante  dans la line :"); YYABORT}
                         |error ID error {yyerror ("  QUOTE  manquante  dans la line :"); YYABORT}
 
-                        |NUMBER
-                        |BOOL
-                        |ID
-                        |THIS
                         |error                                                                                  {yyerror ("erreur dans la line :"); YYABORT}
                         
                         |NEW INT ACO_OUVRANTE EXPRESSION ACO_FERMANTE
