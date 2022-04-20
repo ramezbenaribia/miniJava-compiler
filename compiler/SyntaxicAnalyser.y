@@ -226,8 +226,8 @@ EXPRESSION		:EXPRESSION OPERATOR EXPRESSION
                         |EXPRESSION POINT ID PAR_OUVRANTE EVEXPRESSION error                                    {yyerror ("erreur parenthese fermante  manquante dans la line :"); YYABORT}
 
                         |QUOTE ID QUOTE
-                        |QUOTE ID error {yyerror ("  QUOTE  manquante  dans la line :"); YYABORT}
-                        |error ID error {yyerror ("  QUOTE  manquante  dans la line :"); YYABORT}
+                        |QUOTE ID error {yyerror ("  QUOTE FERMANTE    manquante  dans la line :"); YYABORT}
+                        |error ID QUOTE {yyerror ("  QUOTE  OUVRANTE manquante  dans la line :"); YYABORT}
 
                         |error                                                                                  {yyerror ("erreur dans la line :"); YYABORT}
                         

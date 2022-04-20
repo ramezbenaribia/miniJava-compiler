@@ -8,10 +8,10 @@ class Factorial{
 class Fac {
     public int ComputeFac(int num){
         int num_aux ;
-        if (num < 1)
+        if (num  < 1)
             num_aux = 1 ;
         else{
-            num_aux = num * (this.ComputeFac(num-1)) ; 
+            num_aux = num * (this.ComputeFac(num1)) ; 
 		/*mechant programme n'est pas ? */
 }
         return num_aux ;
