@@ -1,19 +1,39 @@
 class Factorial{
     public static void main(String[] a){
-        System.out.println("hello");
+        System.out.println(new Fac().ComputeFac(10,10<5));
     }
 }
 
+//  ramezez
 
-class Fac {
-    public int ComputeFac(int num){
-        int num_aux ;
-        if (num  < 1)
-            num_aux = 1 ;
-        else{
-            num_aux = num * (this.ComputeFac(num1)) ; 
-		/*mechant programme n'est pas ? */
-}
-        return num_aux ;
+/* 
+qsfvqez
+qsfvqezqerfv
+sf SEMANTIQUEANALYSER_H
+*/
+
+class Fac{
+    bool c1;
+    public int ComputeFac(int a){
+        int p = 6;
+        int p1 = "mahdi";
+        int p2 = 62;
+        if (a < 1)
+            p2 = 1 ;
+        else
+            p2 = p * (this.ComputeFac(p1-1)) ; 
+        return p2 ;
+    }
+
+    public int ComputeFac(int a,bool c){
+        int p;
+        int p1;
+        int p2;
+	int  ramez ;
+        if (a < 1)
+            p2 = 1 ;
+        else
+            p2 = p * (this.ComputeFac(5,6<5)) ; 
+        return p2 ;
     }
 }
