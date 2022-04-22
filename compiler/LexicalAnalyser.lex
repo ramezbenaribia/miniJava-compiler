@@ -122,15 +122,15 @@ tableType                               ({primtiveType}{bl}{tabouvrante}{bl_0}{t
                                                   }
                                                   else if(c == '\n') line++;
                                                   else if(c == EOF) {
-                                                       printf("\nLEXICAL ERROR (line %d): Unterminated comment", line);
+                                                       printf("\n Erreur Lexical (line %d):  commentaire n'est pas termine ", line);
                                                        isComment = 0;
                                                   }
                                              }
                                         }
 
-{comment_fermant}                                 { yylval = (int)strdup(yytext); printf("\nLEXICAL ERROR on character %d (line %d)\n\n", yytext[0], line);   }
+{comment_fermant}                                 { yylval = (int)strdup(yytext); printf("\n Erreur Lexical dans le  character %d (line %d)\n\n", yytext[0], line);   }
 
-.                                     { yylval = (int)strdup(yytext); printf("\nLEXICAL ERROR on character %d (line %d)\n\n", yytext[0], line);   }
+.                                     { yylval = (int)strdup(yytext); printf("\n Erreur Lexical dans le  character %d (line %d)\n\n", yytext[0], line);   }
 
 %%
 

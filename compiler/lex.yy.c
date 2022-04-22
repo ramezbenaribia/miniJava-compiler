@@ -1018,7 +1018,7 @@ YY_RULE_SETUP
                                                   }
                                                   else if(c == '\n') line++;
                                                   else if(c == EOF) {
-                                                       printf("\nLEXICAL ERROR (line %d): Unterminated comment", line);
+                                                       printf("\n Erreur Lexical (line %d):  commentaire n'est pas termine ", line);
                                                        isComment = 0;
                                                   }
                                              }
@@ -1027,12 +1027,12 @@ YY_RULE_SETUP
 case 48:
 YY_RULE_SETUP
 #line 131 "LexicalAnalyser.lex"
-{ yylval = (int)strdup(yytext); printf("\nLEXICAL ERROR on character %d (line %d)\n\n", yytext[0], line);   }
+{ yylval = (int)strdup(yytext); printf("\n Erreur Lexical dans le  character %d (line %d)\n\n", yytext[0], line);   }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
 #line 133 "LexicalAnalyser.lex"
-{ yylval = (int)strdup(yytext); printf("\nLEXICAL ERROR on character %d (line %d)\n\n", yytext[0], line);   }
+{ yylval = (int)strdup(yytext); printf("\n Erreur Lexical dans le  character %d (line %d)\n\n", yytext[0], line);   }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP

@@ -20,7 +20,6 @@
     int expression_level = 0;
 
 
-    #define YYERROR_VERBOSE 1
     
 
 %}
@@ -383,7 +382,11 @@ Expression           : Expression
                         {
                             if(method_call_index != -1 && expression_level < 1) 
                                 insert_param(method_call_index,$1,"bool");
-                        }                                                                      
+                        }
+                        |QUOTE ID QUOTE
+                        |QUOTE ID error {yyerror ("  QUOTE FERMANTE    manquante  dans la line :"); YYABORT}
+                        |error ID QUOTE {yyerror ("  QUOTE  OUVRANTE manquante  dans la line :"); YYABORT}  
+
                         | ID
                         {
 
@@ -392,6 +395,7 @@ Expression           : Expression
 
                             check_declarations($1,USE,VARIABLE,level,classID)
                         }
+                        
                         | THIS
                         | NEW INT TAB_OUVRANTE Expression TAB_FERMANTE
                         | error INT TAB_OUVRANTE Expression TAB_FERMANTE                             { yyerror ("erreur mot cle New errone dans la line:   "); YYABORT}
