@@ -77,9 +77,15 @@
      AFFECTATION = 293,
      DIV = 294,
      COMPOP = 295,
-     BOOL = 296,
-     NUMBER = 297,
-     ID = 298
+     INF = 296,
+     INFE = 297,
+     SUP = 298,
+     SUPE = 299,
+     DIF = 300,
+     EGAL = 301,
+     BOOL = 302,
+     NUMBER = 303,
+     ID = 304
    };
 #endif
 

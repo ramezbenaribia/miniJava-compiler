@@ -98,6 +98,12 @@ tableType                               ({primtiveType}{bl}{tabouvrante}{bl_0}{t
 "\/"                                    { yylval = (int)strdup(yytext); return  DIV;               }
 
 "<"|">"|"<="|">="|"=="|"!="             { yylval = (int)strdup(yytext); return  COMPOP;            }
+"<"                                     { yylval = (int)strdup(yytext); return  INF;            }
+"<="                                     { yylval = (int)strdup(yytext); return  INFE;            }
+">"                                     { yylval = (int)strdup(yytext); return  SUP;            }
+">="                                     { yylval = (int)strdup(yytext); return  SUPE;            }
+"!="                                     { yylval = (int)strdup(yytext); return  DIF;            }
+"=="                                     { yylval = (int)strdup(yytext); return  EGAL;            }
 
 
  

@@ -5,12 +5,8 @@
 #include <string.h>
 #include "SemantiqueAnalyser.h"
 
-#define SYMBOL_TABLE_LENGTH 500
-
-NODE symbol_table[SYMBOL_TABLE_LENGTH];
-
-int node_vide = 0;
 extern int line;
+int node_vide = 0;
 
 int insertSymbol(char *name, Symbol_Usage usage, Symbol_Class classe, char *type, int level, int classID)
 {

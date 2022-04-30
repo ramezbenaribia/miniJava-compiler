@@ -7,6 +7,8 @@
 
 #define PARAM_LENGTH 100
 
+#define SYMBOL_TABLE_LENGTH 500
+
 typedef enum
 {
     CLASSE_UNKNOWN,
@@ -43,6 +45,8 @@ typedef struct node
     int line;
 
 } NODE;
+
+NODE symbol_table[SYMBOL_TABLE_LENGTH];
 
 int insertSymbol(char *name, Symbol_Usage usage, Symbol_Class classe, char *type, int level, int classID);
 

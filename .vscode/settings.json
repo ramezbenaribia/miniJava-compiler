@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "semantiqueanalyser.h": "c"
+        "semantiqueanalyser.h": "c",
+        "machineproduction.h": "c"
     }
 }
