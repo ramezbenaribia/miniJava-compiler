@@ -7,24 +7,25 @@ class Factorial{
 
 class Fac {
 	int mahdouch   	;
-	int ramez;
-	ramez = 45;
+	
+	mahdouch = 4+9 ;	
+	
 	
 	
 	public int func(){
-	int ramez;
+	int ramez
+	int x;
+	int y;
 	
 	
-	if(ramez<2){}else{
-
-}
+	if(ramez<2){}else{}
+	
+	y=56- 854 ;
 	
 	
 	return ramez ;
 	}
 
-	ramez = 56;
+
 	mahdouch = this.func();
-	ramez = 5*8;
-	
 }

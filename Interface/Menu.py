@@ -77,7 +77,7 @@ class Executer():
 
         f.close()
 
-        batcmd = 'JavaCompiler1.exe < ' + 'file.java'
+        batcmd = 'Compiler.exe < ' + 'file.java'
         output = subprocess.getoutput(cmd + " && " + batcmd)
         self.compiled.delete("1.0", END)
         if output == '':

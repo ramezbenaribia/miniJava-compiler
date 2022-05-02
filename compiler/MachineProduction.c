@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 #include "SemantiqueAnalyser.h"
 
@@ -12,6 +13,7 @@
 #define SYMBOL_TABLE_LENGTH 500
 
 ENTREE_CODE *tabCodeInt;
+
 int tabCodeInt_Index = 0;
 
 extern int node_vide;
@@ -100,6 +102,35 @@ void add_variable(char *code_op, char *ID, char *nomFct)
         }
     }
 }
+void add_method(char *code_op, int ID, char *nomFct)
+{
+    bool founded = false;
+    int i;
+    int j;
+
+    for (i = 0; i < tabCodeInt_Index; i++)
+    {
+        if (strcmp(tabCodeInt[i].nomFct, nomFct) == 0)
+        {
+            tabCodeInt[tabCodeInt_Index] = tabCodeInt[i];
+            tabCodeInt[tabCodeInt_Index].nomFct = "";
+            for (j = i; j < tabCodeInt_Index; j++)
+            {
+                tabCodeInt[j] = tabCodeInt[j + 1];
+                if (strcmp(tabCodeInt[j].code_op, "RETOUR") == 0)
+                {
+                    tabCodeInt[j].operande = ID;
+                }
+            }
+            founded = true;
+            break;
+        }
+    }
+    if (!founded)
+    {
+        genCode(code_op, ID, nomFct);
+    }
+}
 
 void affichage()
 {
@@ -107,7 +138,7 @@ void affichage()
     for (i = 0; i < tabCodeInt_Index; i++)
     {
 
-        if (strcmp(tabCodeInt[i].nomFct, "OPERATION") == 0)
+        if ((strcmp(tabCodeInt[i].nomFct, "OPERATION") == 0) || (strcmp(tabCodeInt[i].nomFct, "ENTSORT") == 0))
         {
             printf("%s  \n", tabCodeInt[i].code_op);
         }

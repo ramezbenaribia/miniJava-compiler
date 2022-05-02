@@ -101,6 +101,7 @@ ClassDeclarationRepeat          :ClassDeclaration ClassDeclarationRepeat
 
 
 ClassDeclaration     : ClassScope  ExtendsID ACO_OUVRANTE VarDeclarationRepeat MethodDeclarationRepeat ACO_FERMANTE 
+                         |ClassScope  ExtendsID ACO_OUVRANTE VarDeclarationRepeat MethodDeclarationRepeat STATEMENT ACO_FERMANTE 
                         | error ExtendsID ACO_OUVRANTE VarDeclarationRepeat MethodDeclarationRepeat ACO_FERMANTE  {yyerror (" erreur! mot cle class errone dans la line : "); YYABORT}
                         | ClassScope ExtendsID error VarDeclarationRepeat MethodDeclarationRepeat ACO_FERMANTE     { yyerror (" erreur! acolade ouvarnte  manquant dans la line :  "); YYABORT}
                         | ClassScope ExtendsID ACO_OUVRANTE VarDeclarationRepeat MethodDeclarationRepeat error      { yyerror (" erreur! acolade FERMANT  manquant dans la line :   "); YYABORT}
@@ -317,7 +318,16 @@ QUOTE               :DOUBLEQUOTE
 MethodDeclarationRepeat	:MethodDeclaration MethodDeclarationRepeat	
                         |epsilon;                              
 
-MethodDeclaration    : PUBLIC MethodType PAR_OUVRANTE TIVTIRepeat PAR_FERMANTE ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat RETURN Expression POINT_VIRGULE ACO_FERMANTE      
+MethodDeclaration    : PUBLIC MethodType PAR_OUVRANTE   { } TIVTIRepeat PAR_FERMANTE ACO_OUVRANTE 
+                          {
+                              genCode("ENTREE", line, "ENTSORT");
+                          }
+                          VarDeclarationRepeat STATEMENTRepeat RETURN Expression POINT_VIRGULE ACO_FERMANTE
+                          {
+                              genCode("SORTIE", line, "ENTSORT");
+                              genCode("RETOUR",line,"");
+
+                          }      
                         |PUBLIC MethodType PAR_OUVRANTE TIVTIRepeat PAR_FERMANTE ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat VarDeclarationRepeat RETURN Expression POINT_VIRGULE ACO_FERMANTE      
                         | error MethodType PAR_OUVRANTE TIVTIRepeat PAR_FERMANTE ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat RETURN Expression POINT_VIRGULE ACO_FERMANTE    { yyerror (" mot cle Public class manquant ou errone dans la line "); YYABORT}
                         | PUBLIC error error TIVTIRepeat PAR_FERMANTE ACO_OUVRANTE VarDeclarationRepeat STATEMENTRepeat RETURN Expression POINT_VIRGULE ACO_FERMANTE        { yyerror (" erreur parenthese ouvarnte  manquante dans la line :"); YYABORT}
@@ -472,6 +482,7 @@ MethodType           : DATATYPE ID
                         {
                             check_method($2,$1,classID);
                             isParam = true;
+                            add_method("APPEL", line, $2);
                         }
                         | VOID ID
                         {
@@ -545,6 +556,9 @@ SectionE_SCE         : Expression SectionC_E
 UseFunction          : POINT ID                                                                       
                         { 
                             method_call_index = insertSymbol($2,USE,METHOD,"DOT_IDENT",0,classID);
+                            add_method("RETOUR",line,$2);
+
+
                         }
                         | error ID                                                                   { yyerror (" POINT manquant dans la line : "); YYABORT}
                         | POINT  error                                                                    { yyerror ("identifier errone dans la line :  "); YYABORT}
@@ -601,6 +615,7 @@ Expression           : Expression
                         | Expression error LENGTH                                                       { yyerror (" POINT manquant dans la line : "); YYABORT}
                         | Expression POINT error                                                          { yyerror ("LONGEUR manquant dans la line :"); YYABORT}
                         | Expression UseFunction PAR_OUVRANTE SectionE_SCE PAR_FERMANTE  
+                        // | Expression UseFunction PAR_OUVRANTE  PAR_FERMANTE  
                         | Expression UseFunction error SectionE_SCE PAR_FERMANTE                         { yyerror ("parenthese ouvrante manquante dans la line: "); YYABORT}
                         | Expression UseFunction PAR_OUVRANTE SectionE_SCE error                          { yyerror ("parenthese  fermant manquant dans la line: "); YYABORT}
                         | NUMBER           
